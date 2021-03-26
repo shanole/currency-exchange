@@ -2,8 +2,18 @@
 <html lang="en-US">
 
 <head>
-  <title>Document</title>
-  <!-- When change this title must change title in webpack.config.js plugins section and in package.json -->
+  <title>Currency Converter</title>
+  <div class="container">
+    <div class="jumbotron">
+      <h1>Currency Converter</h1>
+      <p>Maybe you're traveling. Maybe you're just wondering how much the US dollar is worth around the world these days.</p>
+    </div>
+    <p><label for="dollar-amount">Amount in USD:</label> <input id="dollar-amount" type="text"></p>
+    <p><label for="foreign-currency">Desired currency:</label> <input id="foreign-currency" type="text"></p>
+    <button class="btn-success" id="exchanged-amount">How much am I worth?</button>
+    <div class="show-conversion"></div>
+    <div class="show-errors"></div>
+  </div>
 </head>
 
 <body>
