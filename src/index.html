@@ -8,9 +8,11 @@
       <h1>Currency Converter</h1>
       <p>Maybe you're traveling. Maybe you're just wondering how much the US dollar is worth around the world these days.</p>
     </div>
-    <p><label for="dollar-amount">Amount in USD:</label> <input id="dollar-amount" type="text"></p>
-    <p><label for="foreign-currency">Desired currency:</label> <input id="foreign-currency" type="text"></p>
-    <button class="btn-success" id="exchanged-amount">How much am I worth?</button>
+    <form id="converter">
+      <p><label for="dollar-amount">Amount in USD:</label> <input id="dollar-amount" type="text"></p>
+      <p><label for="foreign-currency">Desired currency:</label> <input id="foreign-currency" type="text"></p>
+      <button class="btn-success" type="submit">How much am I worth?</button>
+    </form>
     <div class="show-conversion"></div>
     <div class="show-errors"></div>
   </div>
