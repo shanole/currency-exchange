@@ -10,15 +10,14 @@
 2. [Technologies Used](#technologies)
 3. [Setup/Installation Requirements](#setup)
 4. [Additional Setup/Installation Note for Windows Users](#windows)
-5. [Specifications](#specs)
-6. [Known Bugs](#bugs)
-7. [License](#license)
-8. [Contact Information](#contact)
+5. [Known Bugs](#bugs)
+6. [License](#license)
+7. [Contact Information](#contact)
 
 
 ## Description <a id="description"></a>
 
-Description here
+This is a web application built using JavaScript that converts USD into the user's desired currency when given the 3 letter currency code. Conversion rates are taken from ExchangeRate-API.
 
 ## Technologies Used <a id="technologies"></a>
 
@@ -44,24 +43,28 @@ Description here
 * _webpack-cli 3.3.8_
 * _webpack-dev-server 3.11.2_
 * _dotenv 2.0.0_
-* _[Exchange Rate API]_(https://www.exchangerate-api.com/)
+* _[ExchangeRate-API](https://www.exchangerate-api.com/)_
 
 ## Setup/Installation Requirements <a id="setup"></a>
 
 Setup requirements
 * Make sure [Node.js](https://nodejs.org/en/) and [Node Package Manager (npm)](https://www.npmjs.com/) are set up on your local machine. If not, follow the installation guide [here](https://www.learnhowtoprogram.com/intermediate-javascript/getting-started-with-javascript/installing-node-js).
-* This environment was created on a Mac OS. If you are on a non Mac machine, make the following change to package.json
+* <a id="windows"></a>This environment was created on a Mac OS. If you are on a non Mac machine, make the following change to package.json
   * change line 8 to `"start": "npm run build & webpack-dev-server --open --mode development",`
+* Acquire a free API key for the ExchangeRate-API by visiting the [ExchangeRate-API website](https://www.exchangerate-api.com/) and creating a free account with your email address. Click the "Get Free Key" button to get started.
 
 Installation
-* 
+* Clone this repository to your machine `$ git clone https://github.com/shanole/currency-exchange`
+* In the terminal, navigate to the top level of this directory `currency-exchange/`
+* Create an `.env` file at the top level of the directory and save your API key in it as follows: `API_KEY={your API key here}`
+* Recreate project environment and install required dependencies `$ npm install`
+* Create production environment `$ npm run build`
+* Open project in a development server on your web browser `$ npm run start`
+* To lint code run command `$ npm run lint`
 
-## Specifications <a id="specs"></a>
-
-Please refer to `__test__` directory for a comprehensive breakdown of all specs for this project. All tests were run through Jest.
 
 ## Known Bugs <a id="bugs"></a>
-* Any bugs go here
+* None known at this time. If you discover any, feel free to reach out to me via my contact info below!
 
 ## License <a id="license"></a>
 *[MIT](https://choosealicense.com/licenses/mit/)*
