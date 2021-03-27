@@ -23,17 +23,20 @@ $(document).ready(function() {
     event.preventDefault();
     const amountUsd = parseInt($('#dollar-amount').val());
     const currencyCode = $('#foreign-currency').val();
-    console.log(amountUsd);
-    console.log(currencyCode);
 
     let apiMessage = JSON.parse(sessionStorage.getItem('rates'));
+    console.log(apiMessage);
 
-    if (apiMessage.conversion_rates) {
-      let conversionRate = apiMessage.conversion_rates[currencyCode];
-      let convertedAmount = convertCurrency(amountUsd,conversionRate).toFixed(2);
-      $('.show-conversion').text(`You have ${convertedAmount} ${currencyCode}`);
+    if (apiMessage['result']==='error') {
+      $('.show-errors').text(`Error: ${apiMessage['error-type']}`);
     } else {
-      // $('.show-errors')
+      if (apiMessage.conversion_rates[currencyCode]) {
+        let conversionRate = apiMessage.conversion_rates[currencyCode];
+        let convertedAmount = convertCurrency(amountUsd,conversionRate).toFixed(2);
+        $('.show-conversion').text(`You have ${convertedAmount} ${currencyCode}`);
+      } else {
+        $('.show-errors').text(`Error: Invalid currency code`);
+      }
     }
   });
 });
