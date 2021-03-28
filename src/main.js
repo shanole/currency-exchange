@@ -9,8 +9,27 @@ function convertCurrency(amount, rate) {
 }
 
 function saveRatesInfo(response) {
-  let stringifiedResponse = JSON.stringify(response);
-  sessionStorage.setItem('rates',stringifiedResponse);
+  if (response instanceof Error) {
+    sessionStorage.setItem('error',response);
+  } else {
+    let stringifiedResponse = JSON.stringify(response);
+    sessionStorage.setItem('rates',stringifiedResponse);
+  }
+}
+
+function showConversion(amountUsd, currencyCode) {
+  let apiMessage = JSON.parse(sessionStorage.getItem('rates'));
+  if (apiMessage['result']==='error') {
+    $('.show-errors').text(`Error: ${apiMessage['error-type']}`);
+  } else {
+    if (apiMessage.conversion_rates[currencyCode]) {
+      let conversionRate = apiMessage.conversion_rates[currencyCode];
+      let convertedAmount = convertCurrency(amountUsd,conversionRate).toFixed(2);
+      $('.show-conversion').text(`${amountUsd} USD is worth ${convertedAmount} ${currencyCode}`);
+    } else {
+      $('.show-errors').text(`Error: Invalid currency code`);
+    }
+  }
 }
 
 $(document).ready(function() {
@@ -24,22 +43,15 @@ $(document).ready(function() {
     $('.show-conversion').text("");
     $('.show-errors').text("");
 
-    const amountUsd = parseFloat($('#dollar-amount').val());
-    const currencyCode = $('#foreign-currency').val();
+    const userAmount = parseFloat($('#dollar-amount').val());
+    const userCurrency = $('#foreign-currency').val();
 
-    let apiMessage = JSON.parse(sessionStorage.getItem('rates'));
-
-    if (apiMessage['result']==='error') {
-      $('.show-errors').text(`Error: ${apiMessage['error-type']}`);
+    if (sessionStorage.getItem('error')) {
+      $('.show-errors').text(`${sessionStorage.getItem('error')}`);
     } else {
-      if (apiMessage.conversion_rates[currencyCode]) {
-        let conversionRate = apiMessage.conversion_rates[currencyCode];
-        let convertedAmount = convertCurrency(amountUsd,conversionRate).toFixed(2);
-        $('.show-conversion').text(`${amountUsd} USD is worth ${convertedAmount} ${currencyCode}`);
-      } else {
-        $('.show-errors').text(`Error: Invalid currency code`);
-      }
+      showConversion(userAmount, userCurrency);
     }
+  
     $('#dollar-amount').val("");
     $("#foreign-currency").val("");
   });
