@@ -1,0 +1,11 @@
+.show-conversion {
+  font-size: 30px;
+  margin-top: 10px;
+  color: green;
+}
+
+.show-errors {
+  font-size: 30px;
+  margin-top: 10px;
+  color: red;
+}
