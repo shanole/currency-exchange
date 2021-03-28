@@ -8,7 +8,7 @@ function convertCurrency(amount, rate) {
   return amount * rate;
 }
 
-function saveRatesInfo(response) {
+function saveApiInfo(response) {
   if (response instanceof Error) {
     sessionStorage.setItem('error',response);
   } else {
@@ -35,7 +35,7 @@ function showConversion(amountUsd, currencyCode) {
 $(document).ready(function() {
   ExchangeRateService.getRates()
     .then(function(response) {
-      saveRatesInfo(response);
+      saveApiInfo(response);
     });
 
   $('#converter').on('submit', function(event) {
