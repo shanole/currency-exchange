@@ -64,7 +64,8 @@ Installation
 
 
 ## Known Bugs <a id="bugs"></a>
-* None known at this time. If you discover any, feel free to reach out to me via my contact info below!
+* If a non-numeric amount is put into the first form field, NaN bugs will occur
+* If you discover any other bugs, feel free to reach out to me via my contact info below!
 
 ## License <a id="license"></a>
 *[MIT](https://choosealicense.com/licenses/mit/)*
