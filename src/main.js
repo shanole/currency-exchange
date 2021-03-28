@@ -24,7 +24,7 @@ $(document).ready(function() {
     $('.show-conversion').text("");
     $('.show-errors').text("");
 
-    const amountUsd = parseInt($('#dollar-amount').val());
+    const amountUsd = parseFloat($('#dollar-amount').val());
     const currencyCode = $('#foreign-currency').val();
 
     let apiMessage = JSON.parse(sessionStorage.getItem('rates'));
